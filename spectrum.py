@@ -23,17 +23,6 @@ def songSource(name):
 wavfile = wave.open('/home/pi/Music/strobe_deadmau5.wav','r')
 
 
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/kill_everybody_skrillex.wav','r')
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/smooth_operator_sade.wav','r')
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/ten_tigers_bonobo.wav','r')
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/deep_tropical_house_franz_dof.wav','r')
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/deep_tropical_house_franz_dof.wav','r')
-#wavfile = wave.open('/media/pi/My Passport/Musik/wav-files/last_battle1_eminem.wav','r')
-
-#wavfile = songSource('I_forget_where_we_were_ben_howard.wav')
-#wavfile = songSource('last_battle_eminem.wav')                      #6000
-#wavfile = songSource('mystic_melody_and_beat_anton.wav')
-
 sample_rate = wavfile.getframerate()
 no_channels = wavfile.getnchannels()
 chunk = 4096

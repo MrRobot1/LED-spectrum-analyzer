@@ -15,36 +15,11 @@ GPIO.output(LATCH, 0)
 GPIO.output(CLK, 0)
 
 
-p_empty = [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-p_arrow = [ 0x00, 0x00, 0x81, 0x42, 0x24, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00]
-p_full = [ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
-p_half1 = [ 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00]
-p_half2 = [ 0xF0, 0xF0, 0xF0, 0xF0, 0xF0, 0xF0 , 0xF0, 0xF0]
-p_half3 = [ 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF]
-p_half4 = [0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F]
-
-p_a = [0x00, 0x3C, 0x66, 0x66, 0x7E, 0x66, 0x66, 0x66] 
-
-p_opustest = [0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-animation1 = [p_full, p_half1, p_half2, p_half3, p_half4]
 
 
 mapdictionary = { 0 : 0x00, 1 : 0x80, 2 : 0xC0, 3 : 0xE0, 4 : 0xF0, 5 : 0xF8, 6: 0xFC, 7: 0xFE, 8: 0xFF }            #0-8 antal lampar som ska lysa per rad (eller kolumn?)
 
-def main():
-    initMax7219()
 
-    k = 0
-    while(True):
-        for j in range(1,9):
-            address = j+k
-            data = p_arrow[j-1]
-            if((address >= 1) and (address<=8)):
-                writeToMax7219(address, data)
-
-        k = k+1
-        if(k>8):
-            k = 0
 
 def pattern(array):
     initMax7219()
@@ -56,29 +31,6 @@ def pattern(array):
             #print(address, "address", data, "data")
            
             writeToMax7219(address, data)
-
-
-def movingPattern(array):
-    initMax7219()
-
-    k = 0
-    while(True):
-        for j in range(1,9):
-            address = j+k
-            data = array[j-1]
-            if((address >= 1) and (address<=8)):
-                writeToMax7219(address, data)
-
-        k = k+1
-        if(k>8):
-            k = 0
-    
-
-def animation(patternArray):
-    while(True):
-        for p in patternArray:
-            pattern(p)
-            time.sleep(1)
 
 
 
